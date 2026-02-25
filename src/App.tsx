@@ -11,6 +11,7 @@ import {
   Maximize2,
   Layout,
   CheckCircle2,
+  Check,
   Search,
   PenTool,
   Code2,
@@ -31,11 +32,15 @@ function cn(...inputs: ClassValue[]) {
 
 interface Slide {
   id: number;
-  type: 'cover' | 'toc' | 'section' | 'content' | 'summary' | 'chart';
+  type: 'cover' | 'toc' | 'section' | 'content' | 'summary' | 'chart' | 'roadmap' | 'calendar' | 'detail' | 'poc_roadmap';
   title: string;
   subtitle?: string;
   content?: string[];
-  items?: { title: string; desc: string; icon?: React.ReactNode }[];
+  items?: { title: string; desc: string; icon?: React.ReactNode; subItems?: string[] }[];
+  groups?: {
+    deliverable?: { text: string; duration: string };
+    items: { title: string; desc: string }[];
+  }[];
   footer?: string;
   badge?: string;
 }
@@ -51,299 +56,193 @@ const slides: Slide[] = [
   },
   {
     id: 2,
-    type: 'toc',
-    title: 'Table of Contents',
+    type: 'poc_roadmap',
+    title: '단계별 POC 로드맵',
+    subtitle: '5주간의 고강도 GEO 최적화 및 기술 구현 타임라인',
     items: [
-      { title: '01. 현황 및 목표', desc: 'GEO 성과 지표 및 분석 진단' },
-      { title: '02. 설계', desc: 'GEO 기반 정보 구조 및 메시지 전략' },
-      { title: '03. 구현', desc: '콘텐츠 등록 및 구조화 데이터 적용' },
-      { title: '04. 테스트 및 검증', desc: 'QA 및 운영 안정화' },
-      { title: '05. 필요사항', desc: '프로젝트 수행을 위한 필수 리소스' }
+      {
+        title: '1단계: 분석 및 진단',
+        desc: '1.5W',
+        subItems: ['현황 진단', '경쟁사 분석', '인텐트 마이닝']
+      },
+      {
+        title: '2단계: 설계',
+        desc: '1W',
+        subItems: ['GEO 기반 IA 재정의', '메시지 하우스 및 페이지 구조화 전략 수립', '테크니컬 요구사항 정의']
+      },
+      {
+        title: '3단계: 구현',
+        desc: '1W',
+        subItems: ['제품 상세페이지 및 신규 콘텐츠 페이지 등록', '구조화 데이터 및 메타태그 적용']
+      },
+      {
+        title: '4단계: 테스트 및 검증',
+        desc: '1.5W',
+        subItems: ['QA 진행', '모니터링 시스템 구축', '초기 운영 안정화']
+      }
     ]
   },
   {
     id: 3,
-    type: 'chart',
-    title: 'GEO 성과 지표 (예시)',
-    subtitle: 'SEO 대비 GEO 전환 시 기대 노출 상승률',
-    items: [
-      { title: 'ChatGPT', desc: '45%' },
-      { title: 'Perplexity', desc: '62%' },
-      { title: 'Claude', desc: '38%' },
-      { title: 'Gemini', desc: '51%' }
+    type: 'detail',
+    title: '1단계: 분석 및 진단 (Analysis & Diagnosis)',
+    subtitle: 'As-is 현황 및 타겟 고객 의도 분석',
+    groups: [
+      {
+        items: [
+          {
+            title: '1-1. 현황 진단',
+            desc: '주요 AI 플랫폼(ChatGPT, Perplexity 등) 기반 브랜드 언급률, 순위 점유율 및 감성(Sentiment) 정밀 진단'
+          },
+          {
+            title: '1-2. 경쟁사 분석',
+            desc: '경쟁사 대비 AI SOV(Share of Voice) 비교 분석 및 벤치마킹을 통한 핵심 개선 기회(Opportunity) 도출'
+          }
+        ],
+        deliverable: {
+          duration: '1W',
+          text: '주요 프롬프트별 응답 데이터 수집 및 SOV 시각화 리포트 도출'
+        }
+      },
+      {
+        items: [
+          {
+            title: '1-3. 인텐트 마이닝',
+            desc: '고객 검색 의도(추천/비교/해결) 기반 자연어 질문 수집 및 토픽 우선순위 타겟팅'
+          }
+        ],
+        deliverable: {
+          duration: '0.5W',
+          text: '고객 페르소나별 최적화 질문 리스트(FAQ 소스) 도출'
+        }
+      }
     ]
   },
   {
     id: 4,
-    type: 'section',
-    title: '01. 분석 및 진단',
-    subtitle: 'Analysis & Diagnosis'
+    type: 'detail',
+    title: '2단계: 설계 (Design)',
+    subtitle: 'AI가 블루벤트를 올바르고 일관되게 학습할 수 있도록 정보 구조와 콘텐츠 전략을 기획합니다.',
+    groups: [
+      {
+        items: [
+          {
+            title: '2-1. GEO 기반 IA(정보 구조) 재정의',
+            desc: '고객 인텐트별 신규 메뉴(솔루션/가이드/사례) 기획 및 GEO Topic Map 기반 IA 재구성'
+          },
+          {
+            title: '2-2. 메시지 하우스 및 페이지 구조화 전략 수립',
+            desc: '브랜드 정의 고도화 및 사람·AI 모두를 만족시키는 전용 "이중 글쓰기" 템플릿 설계'
+          }
+        ],
+        deliverable: {
+          duration: '1W',
+          text: '템플릿 제작 및 페이지 구조화를 위한 와이어프레임 도출'
+        }
+      },
+      {
+        items: [
+          {
+            title: '2-3. 테크니컬 요구사항 정의',
+            desc: '스키마 마크업(JSON-LD), llms.txt 구성 및 멀티모달(Alt-tag) 최적화 기술 가이드 수립'
+          }
+        ],
+        deliverable: {
+          duration: '퍼블공수 확인필요',
+          text: '고도몰 치환코드 활용 및 데이터 매핑 최적화'
+        }
+      }
+    ]
   },
   {
     id: 5,
-    type: 'content',
-    title: '1단계: 분석 및 진단',
-    items: [
+    type: 'detail',
+    title: '3단계: 구현 (Implementation)',
+    subtitle: '설계된 전략을 바탕으로 실제 고도몰 솔루션 내에 템플릿과 콘텐츠를 제작하고 기술적 요소를 반영합니다.',
+    groups: [
       {
-        title: '1-1. 현황 진단',
-        desc: '주요 AI 플랫폼(ChatGPT, Perplexity 등) 기반 핵심 토픽(음식물 처리기 등) 언급 여부 및 감성 분석',
-        icon: <Search className="w-5 h-5" />
-      },
-      {
-        title: '1-2. 경쟁사 분석',
-        desc: '경쟁사 AI 점유율(SOV) 비교 진단 및 주요 프롬프트(20~30개)별 응답 데이터 시각화 [1W]',
-        icon: <Layout className="w-5 h-5" />
-      },
-      {
-        title: '1-3. 인텐트 마이닝',
-        desc: '고객 자연어 질문(추천/정의/비교 등) 수집 및 페르소나별 FAQ 소스/키워드 도출 [0.5W]',
-        icon: <AlertCircle className="w-5 h-5" />
+        items: [
+          {
+            title: '3-1. 제품 상세페이지 및 신규 콘텐츠 페이지 등록',
+            desc: '인텐트 대응형 FAQ/HowTo 블록 삽입 및 고도몰 템플릿 최적화 구현'
+          },
+          {
+            title: '3-2. 구조화 데이터 및 메타태그 적용',
+            desc: 'JSON-LD 스키마 삽입, SSR 환경 한계 극복을 위한 직접 텍스트 삽입 및 Canonical 가이드 적용'
+          }
+        ],
+        deliverable: {
+          duration: '1W',
+          text: 'HTML 기반 최적화 템플릿 실제 상품 및 콘텐츠 적용 완료'
+        }
       }
     ]
   },
   {
     id: 6,
-    type: 'section',
-    title: '02. 설계',
-    subtitle: 'Design'
-  },
-  {
-    id: 7,
-    type: 'content',
-    title: '2단계: 설계',
-    items: [
+    type: 'detail',
+    title: '4단계: 테스트 및 검증 (Testing & Validation)',
+    subtitle: '구현된 웹사이트가 오류 없이 작동하는지 확인하고, AI 검색 엔진에서의 노출 효과를 측정하여 안정화 합니다.',
+    groups: [
       {
-        title: '2-1. GEO 기반 IA 재정의',
-        desc: '고객 인텐트(Intent) 상황별 신규 메뉴(가이드/케이스 등) 기획 및 Topic Map 기반 IA 재구성',
-        icon: <Layout className="w-5 h-5" />
-      },
-      {
-        title: '2-2. 메시지 하우스 전략',
-        desc: '브랜드 일관성 확보 및 사람/AI 모두를 만족시키는 이중 글쓰기 템플릿 설계 [1W]',
-        icon: <PenTool className="w-5 h-5" />
-      },
-      {
-        title: '2-3. 테크니컬 요구사항',
-        desc: '고도몰 치환코드 기반 스키마 마크업, llms.txt, 이미지 Alt 등 멀티모달 최적화 기준 설계',
-        icon: <Code2 className="w-5 h-5" />
+        items: [
+          {
+            title: '4-1. QA 진행',
+            desc: '내부 톤앤매너 검수, AI 가독성(요약 일치도) 테스트 및 테크니컬 SEO 정밀 기술 검증'
+          },
+          {
+            title: '4-2. 모니터링 시스템 구축',
+            desc: '언급률/순위/SOV 추적 대시보드(Google Sheets + Claude API 연동) 세팅'
+          },
+          {
+            title: '4-3. 초기 운영 안정화',
+            desc: '성과 리포트 기반 콘텐츠 개선 및 전략 수정의 정기적 PDCA(Plan-Do-Check-Act) 사이클 가동'
+          }
+        ],
+        deliverable: {
+          duration: '초기 운영 포함 1.5W~2W',
+          text: '성과 모니터링 및 전략 최적화 리포트 정기 도출'
+        }
       }
-    ]
-  },
-  {
-    id: 8,
-    type: 'section',
-    title: '03. 구현',
-    subtitle: 'Implementation'
-  },
-  {
-    id: 9,
-    type: 'content',
-    title: '3단계: 구현',
-    items: [
-      {
-        title: '3-1. 상세페이지/콘텐츠 등록',
-        desc: '설계 기반 템플릿 수정, FAQ/HowTo 블록 삽입 및 HTML 코딩/슬라이싱 적용',
-        icon: <PenTool className="w-5 h-5" />
-      },
-      {
-        title: '3-2. 구조화 데이터 적용',
-        desc: '고도몰 SSR/URL 정규화 한계 극복을 위한 HTML 내 직접 Schema 및 Canonical 태그 적용 [1W]',
-        icon: <Code2 className="w-5 h-5" />
-      }
-    ]
-  },
-  {
-    id: 10,
-    type: 'section',
-    title: '04. 테스트 및 검증',
-    subtitle: 'Testing & Validation'
-  },
-  {
-    id: 11,
-    type: 'content',
-    title: '4단계: 테스트 및 검증',
-    items: [
-      {
-        title: '4-1. QA 및 테크니컬 체크',
-        desc: 'AI 가독성/요약 일치도 테스트 및 Schema 오류, H1/H2 태그 순서 정합성 검증',
-        icon: <ShieldCheck className="w-5 h-5" />
-      },
-      {
-        title: '4-2. 모니터링 시스템 구축',
-        desc: 'Google Sheets + Claude API 연동 기반 AI 언급률/순위 대시보드 세팅 및 리포팅',
-        icon: <Search className="w-5 h-5" />
-      },
-      {
-        title: '4-3. 초기 운영 안정화',
-        desc: '리포트 분석 기반 PDCA 사이클 운영 및 초기 데이터 기반 전략 수정 [1.5W~2W]',
-        icon: <CheckCircle2 className="w-5 h-5" />
-      }
-    ]
-  },
-  {
-    id: 12,
-    type: 'content',
-    title: '필요사항',
-    items: [
-      {
-        title: '시스템 권한',
-        desc: '고도몰 계정 및 편집 접근 권한 확보',
-        icon: <ShieldCheck className="w-5 h-5" />
-      },
-      {
-        title: '원본 데이터',
-        desc: '제품 스펙표, 매뉴얼 PDF, FAQ 원문 등 Raw Data 제공',
-        icon: <AlertCircle className="w-5 h-5" />
-      },
-      {
-        title: '디자인 리소스',
-        desc: '상세페이지 리디자인을 위한 Figma/PSD 소스',
-        icon: <PenTool className="w-5 h-5" />
-      }
-    ]
-  },
-  {
-    id: 13,
-    type: 'summary',
-    title: 'Summary',
-    content: [
-      'AI 플랫폼 내 브랜드 가시성 확보를 위한 GEO 최적화',
-      '사용자 인텐트 기반의 정보 구조(IA) 및 콘텐츠 재설계',
-      '구조화 데이터 적용을 통한 검색 엔진 신뢰도 향상',
-      '지속적인 모니터링을 통한 데이터 기반의 성과 최적화'
     ]
   }
 ];
 
 
 export default function App() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [isFullscreen, setIsFullscreen] = useState(false);
-
-  const nextSlide = () => setCurrentSlide((prev) => Math.min(prev + 1, slides.length - 1));
-  const prevSlide = () => setCurrentSlide((prev) => Math.max(prev - 1, 0));
+  const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'f') toggleFullscreen();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute('data-index'));
+            setActiveSlide(index);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    document.querySelectorAll('.slide-section').forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
-  const toggleFullscreen = () => {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
-    } else {
-      document.exitFullscreen();
-      setIsFullscreen(false);
-    }
-  };
-
-  const slide = slides[currentSlide];
-
   return (
-    <div className="min-h-screen bg-[#f8fafc] text-[#1e293b] font-sans selection:bg-blue-100 selection:text-blue-700 overflow-hidden flex flex-col">
-      {/* Top Header / Progress Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/60">
-        <div className="flex items-center justify-between px-6 h-14">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
-              <BookOpen className="w-5 h-5" />
-            </div>
-            <span className="font-bold text-slate-900 tracking-tight">Bluevent <span className="text-blue-600">GEO</span></span>
-            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-500 border border-slate-200">V2.1</span>
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <div className="hidden md:flex items-center space-x-1">
-              {slides.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={cn(
-                    "h-1 rounded-full transition-all duration-300",
-                    idx === currentSlide ? "w-6 bg-blue-600" : "w-1.5 bg-slate-200"
-                  )}
-                />
-              ))}
-            </div>
-            <button
-              onClick={toggleFullscreen}
-              className="p-2 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
-            >
-              <Maximize2 className="w-4 h-4" />
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <div className="flex-1 flex flex-row overflow-hidden">
-        {/* Left Sidebar Navigation */}
-        <aside className="w-72 border-r border-slate-200/60 bg-white/50 backdrop-blur-md overflow-y-auto hidden lg:flex flex-col pt-20 pb-24">
-          <div className="px-6 py-4">
-            <div className="flex items-center space-x-2 mb-8 px-2">
-              <Layout className="w-4 h-4 text-blue-600" />
-              <h3 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.2em]">Documentation Index</h3>
-            </div>
-            <nav className="space-y-1">
-              {slides.map((s, idx) => (
-                <button
-                  key={s.id}
-                  onClick={() => setCurrentSlide(idx)}
-                  className={cn(
-                    "w-full text-left px-4 py-3 rounded-2xl transition-all flex items-start space-x-4 group relative",
-                    currentSlide === idx
-                      ? "bg-blue-600 text-white shadow-lg shadow-blue-200"
-                      : "text-slate-500 hover:bg-slate-50 hover:text-slate-800"
-                  )}
-                >
-                  {currentSlide === idx && (
-                    <motion.div
-                      layoutId="sidebar-active"
-                      className="absolute left-0 w-1 h-6 bg-white rounded-full my-auto inset-y-0 -ml-0.5"
-                    />
-                  )}
-                  <span className={cn(
-                    "font-mono text-xs font-bold mt-0.5 shrink-0",
-                    currentSlide === idx ? "text-blue-100" : "text-slate-300 group-hover:text-blue-400"
-                  )}>
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <div className="flex flex-col overflow-hidden">
-                    <span className={cn(
-                      "text-sm leading-tight truncate",
-                      (s.type === 'section' || idx <= 1) ? "font-bold" : "font-medium",
-                      (s.type === 'section' && currentSlide !== idx) ? "text-blue-600" : ""
-                    )}>
-                      {s.title}
-                    </span>
-                  </div>
-                </button>
-              ))}
-            </nav>
-          </div>
-        </aside>
-
-        {/* Main Slide Area */}
-        <main className="flex-1 relative flex items-center justify-center p-4 md:p-12 lg:p-16 pt-20 md:pt-28 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlide}
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full max-w-6xl aspect-[16/10] bg-white border border-slate-200/60 rounded-[32px] shadow-xl shadow-slate-200/50 overflow-hidden relative flex flex-col"
-            >
-              {/* Slide Background Pattern */}
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'radial-gradient(#2563eb 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} />
-
-              {/* Slide Content */}
-              <div className="flex-1 relative z-10 flex flex-col p-10 md:p-20">
+    <div className="h-screen bg-[#f8fafc] text-[#1e293b] font-sans selection:bg-blue-100 selection:text-blue-700 overflow-y-auto snap-y snap-mandatory scroll-smooth flex flex-col items-center">
+      <div className="w-full flex flex-col items-center space-y-[40vh]">
+        {slides.map((slide, index) => (
+          <section
+            key={slide.id}
+            data-index={index}
+            className="slide-section flex-shrink-0 h-screen w-full snap-start snap-always flex items-center justify-center p-6 md:py-24 md:px-16 overflow-hidden"
+          >
+            <div className="w-full max-w-[1600px] h-full relative flex flex-col justify-center">
+              <div className="relative z-10 flex flex-col p-10 md:py-16 md:px-20 bg-white/40 rounded-[40px] backdrop-blur-sm border border-white/20">
                 {slide.type === 'cover' && (
                   <div className="flex-1 flex flex-col justify-center items-center text-center space-y-12">
                     <motion.div
@@ -356,7 +255,7 @@ export default function App() {
                         <Target className="w-3.5 h-3.5" />
                         <span>Project Execution Plan</span>
                       </div>
-                      <h1 className="text-5xl md:text-7xl font-heavy font-black tracking-tight text-slate-900 leading-[1.1]">
+                      <h1 className="text-4xl md:text-6xl font-heavy font-black tracking-tight text-slate-900 leading-[1.1]">
                         {slide.title}
                       </h1>
                     </motion.div>
@@ -365,25 +264,17 @@ export default function App() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.4 }}
-                      className="text-xl md:text-2xl text-slate-500 font-medium max-w-3xl leading-relaxed"
+                      className="text-lg md:text-xl text-slate-500 font-medium max-w-3xl leading-relaxed"
                     >
                       {slide.subtitle}
                     </motion.p>
 
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="pt-8"
-                    >
-                      <button
-                        onClick={nextSlide}
-                        className="group flex items-center space-x-3 px-8 py-4 bg-slate-900 hover:bg-blue-600 text-white rounded-2xl font-bold transition-all hover:scale-105 active:scale-95 shadow-xl shadow-slate-200"
-                      >
-                        <span>시작하기</span>
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                      </button>
-                    </motion.div>
+                    <div className="pt-8">
+                      <div className="text-slate-400 font-bold text-sm flex items-center space-x-2 animate-bounce">
+                        <span>스크롤하여 탐색하기</span>
+                        <ArrowRight className="w-4 h-4 rotate-90" />
+                      </div>
+                    </div>
                   </div>
                 )}
 
@@ -405,8 +296,10 @@ export default function App() {
                           transition={{ delay: 0.1 * idx + 0.2 }}
                           className="group relative flex items-start space-x-5 p-6 rounded-2xl hover:bg-slate-50 border border-transparent hover:border-slate-100 transition-all cursor-pointer"
                           onClick={() => {
-                            const target = slides.findIndex(s => s.title.includes(item.title.split('. ')[1]));
-                            if (target !== -1) setCurrentSlide(target);
+                            const targetIndex = slides.findIndex(s => s.title.includes(item.title.split('. ')[1]));
+                            if (targetIndex !== -1) {
+                              document.querySelector(`[data-index="${targetIndex}"]`)?.scrollIntoView({ behavior: 'smooth' });
+                            }
                           }}
                         >
                           <div className="w-12 h-12 rounded-xl bg-slate-100 group-hover:bg-blue-100 flex items-center justify-center text-slate-400 group-hover:text-blue-600 font-bold font-mono transition-colors shrink-0">
@@ -482,14 +375,14 @@ export default function App() {
                     <div className="flex justify-between items-end mb-12 px-2">
                       <div className="space-y-1">
                         <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">
-                          {slide.id === 12 ? 'Pre-requisites' : `Phase ${slide.id === 5 ? '1' : slide.id === 7 ? '2' : slide.id === 9 ? '3' : '4'}`}
+                          {slide.id === 10 ? 'Pre-requisites' : `Phase ${slide.id === 3 ? '1' : slide.id === 5 ? '2' : slide.id === 7 ? '3' : '4'}`}
                         </span>
                         <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
                       </div>
                     </div>
 
-                    {/* Notice banner moved under title for Slide 12 */}
-                    {slide.id === 12 && (
+                    {/* Notice banner moved under title for Slide 10 */}
+                    {slide.id === 10 && (
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -509,7 +402,7 @@ export default function App() {
                     )}
 
                     {/* Layout Variant 1: Grid (for Phase 1, 2, 4) */}
-                    {(slide.id === 5 || slide.id === 7 || slide.id === 11) && (
+                    {(slide.id === 3 || slide.id === 5 || slide.id === 9) && (
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {slide.items?.map((item, idx) => {
                           const durationMatch = item.desc?.match(/\[(.*?)\]/);
@@ -545,7 +438,7 @@ export default function App() {
                     )}
 
                     {/* Layout Variant 2: Split / Featured (for Phase 3) */}
-                    {slide.id === 9 && (
+                    {slide.id === 7 && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 items-center">
                         {slide.items?.map((item, idx) => {
                           const durationMatch = item.desc?.match(/\[(.*?)\]/);
@@ -581,8 +474,8 @@ export default function App() {
                       </div>
                     )}
 
-                    {/* Layout Variant 3: Specialized Resource Board (for Slide 12) */}
-                    {slide.id === 12 && (
+                    {/* Layout Variant 3: Specialized Resource Board (for Slide 10) */}
+                    {slide.id === 10 && (
                       <div className="flex-1 flex flex-col justify-center">
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                           {slide.items?.map((item, idx) => (
@@ -614,72 +507,323 @@ export default function App() {
                   </div>
                 )}
 
-                {slide.type === 'summary' && (
+                {slide.type === 'roadmap' && (
                   <div className="flex-1 flex flex-col">
                     <div className="mb-16">
                       <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
-                      <div className="h-1.5 w-20 bg-blue-600 mt-4 rounded-full" />
+                      <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
+                    </div>
+                    <div className="flex-1 relative flex items-center">
+                      <div className="absolute top-1/2 left-0 right-0 h-1 bg-slate-100 -translate-y-1/2 rounded-full overflow-hidden">
+                        <motion.div
+                          initial={{ width: 0 }}
+                          animate={{ width: '100%' }}
+                          transition={{ duration: 1.5, ease: "easeInOut" }}
+                          className="h-full bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.5)]"
+                        />
+                      </div>
+                      <div className="grid grid-cols-4 gap-6 w-full relative z-10">
+                        {slide.items?.map((item, idx) => {
+                          const durationMatch = item.desc?.match(/\[(.*?)\]/);
+                          const cleanDesc = item.desc?.replace(/\[(.*?)\]/, '').trim();
+                          return (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, y: idx % 2 === 0 ? -30 : 30 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.2 * idx + 0.5, type: "spring" }}
+                              className="flex flex-col items-center text-center"
+                            >
+                              {idx % 2 === 0 && (
+                                <div className="mb-8 p-6 rounded-[32px] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 group hover:-translate-y-2 transition-transform duration-500">
+                                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-200">
+                                    {item.icon}
+                                  </div>
+                                  <h3 className="text-lg font-black text-slate-900 mb-2 truncate">{item.title}</h3>
+                                  <p className="text-xs text-slate-500 font-medium leading-relaxed mb-3">{cleanDesc}</p>
+                                  {durationMatch && (
+                                    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 font-black text-[9px] uppercase">
+                                      <Clock className="w-3 h-3" />
+                                      <span>{durationMatch[1]}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                              <div className="w-5 h-5 rounded-full bg-white border-4 border-blue-600 shadow-[0_0_10px_rgba(37,99,235,0.4)] relative">
+                                <motion.div
+                                  animate={{ scale: [1, 1.5, 1] }}
+                                  transition={{ repeat: Infinity, duration: 2 }}
+                                  className="absolute inset-0 rounded-full bg-blue-600/20"
+                                />
+                              </div>
+                              {idx % 2 !== 0 && (
+                                <div className="mt-8 p-6 rounded-[32px] bg-white border border-slate-100 shadow-xl shadow-slate-200/50 group hover:translate-y-2 transition-transform duration-500">
+                                  <div className="w-12 h-12 mx-auto mb-4 rounded-xl bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-200">
+                                    {item.icon}
+                                  </div>
+                                  <h3 className="text-lg font-black text-slate-900 mb-2 truncate">{item.title}</h3>
+                                  <p className="text-xs text-slate-500 font-medium leading-relaxed mb-3">{cleanDesc}</p>
+                                  {durationMatch && (
+                                    <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-600 border border-blue-100 font-black text-[9px] uppercase">
+                                      <Clock className="w-3 h-3" />
+                                      <span>{durationMatch[1]}</span>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {slide.type === 'poc_roadmap' && (
+                  <div className="flex-1 flex flex-col">
+                    <div className="mb-6">
+                      <h2 className="text-5xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
+                      <p className="text-xl text-slate-500 font-medium mt-2">{slide.subtitle}</p>
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-center max-w-4xl space-y-6">
-                      {slide.content?.map((text, idx) => (
+                    {/* Horizontal Weekly Timeline section */}
+                    <div className="flex-1 py-8 px-10 bg-white/40 border border-white rounded-[40px] shadow-sm relative overflow-hidden backdrop-blur-sm flex flex-col">
+                      <div className="grid grid-cols-5 mb-4 px-2 text-[10px] font-black tracking-[0.4em] text-slate-300">
+                        {[1, 2, 3, 4, 5].map(w => (
+                          <div key={w} className="text-center">WEEK 0{w}</div>
+                        ))}
+                      </div>
+
+                      <div className="relative flex-1 grid grid-cols-5 gap-0 border-t border-slate-100/50 pt-5">
+                        {/* Vertical Grid Lines */}
+                        {[1, 2, 3, 4, 5].map(i => (
+                          <div key={i} className="absolute top-0 bottom-0 border-l border-slate-100/40" style={{ left: `${(i - 1) * 20}%` }} />
+                        ))}
+                        <div className="absolute top-0 bottom-0 right-0 border-r border-slate-100/40" />
+
+                        {/* Phase Rows */}
+                        <div className="col-span-5 flex flex-col space-y-4">
+                          {slide.items?.map((item, idx) => {
+                            const getStyle = (index: number) => {
+                              switch (index) {
+                                case 0: return { marginLeft: '0%', width: '30%', bgColor: 'bg-sky-400', shadow: '' };
+                                case 1: return { marginLeft: '30%', width: '20%', bgColor: 'bg-blue-500', shadow: '' };
+                                case 2: return { marginLeft: '50%', width: '20%', bgColor: 'bg-blue-700', shadow: '' };
+                                case 3: return { marginLeft: '70%', width: '30%', bgColor: 'bg-indigo-900', shadow: '' };
+                                default: return {};
+                              }
+                            };
+                            const style = getStyle(idx);
+                            return (
+                              <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.2 + idx * 0.1 }}
+                                className="relative"
+                              >
+                                <div
+                                  className={cn(
+                                    "h-10 rounded-2xl flex items-center px-6 relative z-10 transition-all hover:translate-x-1",
+                                    (style as any).bgColor
+                                  )}
+                                  style={{ marginLeft: (style as any).marginLeft, width: (style as any).width }}
+                                >
+                                  <span className="text-white font-black text-sm whitespace-nowrap">{item.title}</span>
+                                  <span className="ml-auto text-[11px] font-black text-white/60 uppercase">{item.desc}</span>
+                                </div>
+
+                                <div
+                                  className="mt-1.5 grid grid-cols-1 gap-0.5 pl-4"
+                                  style={{ marginLeft: (style as any).marginLeft, width: (style as any).width }}
+                                >
+                                  {item.subItems?.map((sub, sidx) => (
+                                    <div key={sidx} className="flex items-center space-x-2 group">
+                                      <div className="w-1 h-1 rounded-full bg-slate-200 shrink-0 group-hover:scale-150 transition-transform" />
+                                      <span className="text-[11px] font-bold text-slate-400 leading-tight group-hover:text-slate-600 transition-colors">{sub}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {slide.type === 'calendar' && (
+                  <div className="flex-1 flex flex-col">
+                    <div className="mb-12">
+                      <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
+                      <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
+                    </div>
+                    <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {slide.items?.map((item, idx) => (
                         <motion.div
                           key={idx}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 * idx + 0.2 }}
-                          className="flex items-center space-x-6 p-6 rounded-3xl bg-slate-50 border border-slate-100"
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ delay: 0.1 * idx + 0.3 }}
+                          className="relative group p-8 rounded-[40px] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 flex flex-col overflow-hidden"
                         >
-                          <div className="w-4 h-4 rounded-full bg-blue-600 shrink-0 shadow-lg shadow-blue-200" />
-                          <p className="text-2xl font-bold text-slate-700">{text}</p>
+                          <div className="absolute top-0 right-0 w-24 h-24 bg-blue-600/5 rounded-bl-[60px] group-hover:bg-blue-600 transition-colors duration-500" />
+                          <div className="flex items-center space-x-4 mb-6 relative z-10">
+                            <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all duration-500">
+                              {item.icon}
+                            </div>
+                            <span className="text-sm font-black text-blue-600 uppercase tracking-widest group-hover:text-white transition-colors">
+                              {item.title}
+                            </span>
+                          </div>
+                          <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors mb-3 leading-tight">
+                            {item.desc}
+                          </h3>
                         </motion.div>
                       ))}
                     </div>
                   </div>
                 )}
 
-                {/* Slide Footer */}
-                <footer className="mt-auto pt-8 flex justify-between items-center text-slate-400 font-bold border-t border-slate-100">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-xs uppercase tracking-widest leading-none">{slide.footer || 'Bluevent GEO Project'}</span>
-                  </div>
-                  <div className="flex items-center space-x-4">
-                    <div className="flex space-x-1">
-                      <span className="text-blue-600">{currentSlide + 1}</span>
-                      <span>/</span>
-                      <span>{slides.length}</span>
+                {slide.type === 'detail' && (
+                  <div className="flex-1 flex flex-col">
+                    <div className="mb-14">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <div className="px-3 py-1 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg">Detailed Plan</div>
+                        <div className="h-px w-12 bg-slate-200" />
+                      </div>
+                      <h2 className="text-5xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
+                      <p className="text-xl text-slate-500 font-medium mt-2">{slide.subtitle}</p>
+                    </div>
+
+                    <div className={cn(
+                      "grid gap-8 flex-1",
+                      slide.groups?.length === 1 ? "grid-cols-1" :
+                        slide.groups?.length === 2 ? "grid-cols-2" : "grid-cols-3"
+                    )}>
+                      {slide.groups?.map((group, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.1 * idx + 0.2 }}
+                          className="flex flex-col bg-white rounded-[48px] border border-slate-100 overflow-hidden group hover:-translate-y-2 transition-all duration-500"
+                        >
+                          {/* Card Header Area */}
+                          <div className="p-10 pb-6 space-y-8 flex-1">
+                            <div className="flex justify-between items-start">
+                              <div className="w-16 h-16 rounded-[22px] bg-slate-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
+                                {idx === 0 ? <Search className="w-8 h-8" /> : idx === 1 ? <Target className="w-8 h-8" /> : <TrendingUp className="w-8 h-8" />}
+                              </div>
+                              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
+                                {index >= 2 ? `Phase 0${index - 1}` : `Slide 0${index}`}
+                              </span>
+                            </div>
+
+                            <div className="space-y-6">
+                              {group.items.map((item, iidx) => (
+                                <div key={iidx} className="space-y-2">
+                                  <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                    {item.title}
+                                  </h3>
+                                  <p className="text-base font-medium text-slate-500 leading-relaxed">
+                                    {item.desc}
+                                  </p>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Deliverable/Output Section */}
+                          {group.deliverable && (
+                            <div className="p-8 bg-slate-50 border-t border-slate-100 space-y-4">
+                              <div className="flex items-center justify-end">
+                                <div className="flex items-center space-x-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-md text-[9px] font-black">
+                                  <Clock className="w-3 h-3" />
+                                  <span>{group.deliverable.duration}</span>
+                                </div>
+                              </div>
+                              <div className="flex items-start space-x-3">
+                                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
+                                <p className="text-[15px] font-bold text-slate-600 leading-relaxed">
+                                  {group.deliverable.text}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                          {!group.deliverable && (
+                            <div className="p-8 bg-slate-50 border-t border-slate-100" />
+                          )}
+                        </motion.div>
+                      ))}
                     </div>
                   </div>
-                </footer>
+                )}
+
+                {slide.type === 'summary' && (
+                  <div className="flex-1 flex flex-col">
+                    <div className="mb-12">
+                      <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
+                      <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
+                    </div>
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 flex-1 items-center">
+                      <div className="space-y-6">
+                        {slide.content?.map((text, idx) => (
+                          <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.1 * idx + 0.2 }}
+                            className="flex items-center space-x-5 p-5 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-lg transition-all"
+                          >
+                            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-200">
+                              <CheckCircle2 className="w-6 h-6" />
+                            </div>
+                            <p className="text-xl font-bold text-slate-700 leading-tight">{text}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+
+                      <div className="space-y-4">
+                        <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements</div>
+                        <div className="grid grid-cols-1 gap-4">
+                          {slide.items?.map((item, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, scale: 0.95 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{ delay: 0.5 + idx * 0.1 }}
+                              className="flex items-center space-x-6 p-6 rounded-[32px] bg-white border border-slate-100 shadow-md hover:shadow-xl transition-shadow group"
+                            >
+                              <div className="w-14 h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                {item.icon}
+                              </div>
+                              <div className="space-y-1">
+                                <h3 className="text-xl font-black text-slate-900 leading-none mb-1">{item.title}</h3>
+                                <p className="text-sm text-slate-500 font-medium">{item.desc}</p>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
               </div>
-            </motion.div>
-          </AnimatePresence>
-        </main>
+            </div>
+          </section>
+        ))}
       </div>
 
-      {/* Floating Controls */}
-      <div className="fixed bottom-8 left-1/2 md:left-auto md:right-8 -translate-x-1/2 md:translate-x-0 z-50 flex items-center space-x-2 p-2 bg-white/80 backdrop-blur-xl border border-slate-200/60 rounded-2xl shadow-2xl shadow-slate-200/50">
-        <button
-          onClick={prevSlide}
-          disabled={currentSlide === 0}
-          className="p-3 rounded-xl hover:bg-slate-100 disabled:opacity-20 transition-all active:scale-90"
-        >
-          <ChevronLeft className="w-6 h-6 text-slate-700" />
-        </button>
-
-        <div className="px-4 border-l border-r border-slate-100 font-mono text-sm font-bold text-slate-400">
-          {String(currentSlide + 1).padStart(2, '0')}
-        </div>
-
-        <button
-          onClick={nextSlide}
-          disabled={currentSlide === slides.length - 1}
-          className="p-3 rounded-xl hover:bg-slate-100 disabled:opacity-20 transition-all active:scale-90"
-        >
-          <ChevronRight className="w-6 h-6 text-slate-700" />
-        </button>
+      {/* Minimal Page Number */}
+      <div className="fixed bottom-10 right-14 z-50 pointer-events-none opacity-20">
+        <span className="text-xs font-medium text-slate-500 tracking-widest">
+          {activeSlide + 1}
+        </span>
       </div>
     </div>
   );
 }
-
