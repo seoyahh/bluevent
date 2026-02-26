@@ -630,11 +630,9 @@ export default function App() {
                         <div className="absolute top-[152px] inset-x-0 flex pointer-events-none">
                           <div className="w-[50%] px-1 flex flex-col items-center">
                             <div className="w-full h-[3px] bg-sky-400 rounded-full" />
-                            <span className="text-[9px] font-black text-sky-500 mt-2 uppercase tracking-tight">Phase 01: Setup (2W)</span>
                           </div>
                           <div className="w-[50%] px-1 flex flex-col items-center">
                             <div className="w-full h-[3px] bg-indigo-900 rounded-full" />
-                            <span className="text-[9px] font-black text-indigo-900 mt-2 uppercase tracking-tight">Phase 02: Verification (2W)</span>
                           </div>
                         </div>
 
