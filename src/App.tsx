@@ -61,22 +61,22 @@ const slides: Slide[] = [
     items: [
       {
         title: '1단계: 현황 분석 및 진단',
-        desc: '1.5W',
+        desc: '1W',
         subItems: ['AI 응답/인용 출처 수집', '사이트 구조·색인·정규화 점검']
       },
       {
         title: '2단계: 설계 및 구조화',
-        desc: '1W + α',
+        desc: '0.5W',
         subItems: ['IA 기술 설계(토픽/엔티티)', '스키마/메타/정규화 설계']
       },
       {
         title: '3단계: 구현 및 적용',
-        desc: '1W',
+        desc: '0.5W',
         subItems: ['HTML 구조/페이징 반영', '구조화 데이터 적용(코드)']
       },
       {
         title: '4단계: 테스트 및 검증',
-        desc: '1.5W',
+        desc: '2W',
         subItems: ['기술적 무결성 QA', 'AI 인용/요약 일치도 검증']
       }
     ]
@@ -84,7 +84,7 @@ const slides: Slide[] = [
   {
     id: 3,
     type: 'detail',
-    title: '1단계: 현황 분석 및 진단 (1.5W)',
+    title: '1단계: 현황 분석 및 진단 (1W)',
     subtitle: 'GEO 관점에서 "AI가 읽고 이해하고 인용할 수 있는 구조"의 결함을 찾습니다.',
     groups: [
       {
@@ -95,7 +95,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '1W',
+          duration: '0.7W',
           text: '프롬프트 세트(20~30개) 정의 + 응답/근거 URL 로그 수집 + 진단 리포트'
         }
       },
@@ -107,7 +107,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '0.5W',
+          duration: '0.3W',
           text: 'URL 정규화/색인 진단 체크리스트 + 개선 항목 목록(우선순위 포함)'
         }
       }
@@ -116,7 +116,7 @@ const slides: Slide[] = [
   {
     id: 4,
     type: 'detail',
-    title: '2단계: 설계 및 구조화 (1W + α)',
+    title: '2단계: 설계 및 구조화 (0.5W)',
     subtitle: 'AI가 블루벤트를 일관되게 학습할 수 있도록 정보구조 및 화면 구조화 작업을 진행합니다.',
     groups: [
       {
@@ -127,7 +127,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '1W',
+          duration: '0.2W',
           text: '페이지 타입 정의서 + 헤딩/섹션 규칙 + 내부링크 규칙'
         }
       },
@@ -139,7 +139,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '확인 필요',
+          duration: '0.3W',
           text: 'JSON-LD 템플릿(페이지 타입별) + 치환코드/필드 매핑 상세 설계'
         }
       }
@@ -148,7 +148,7 @@ const slides: Slide[] = [
   {
     id: 5,
     type: 'detail',
-    title: '3단계: 구현 및 적용 (1W)',
+    title: '3단계: 구현 및 적용 (0.5W)',
     subtitle: '신규 콘텐츠 제작이 아닌 템플릿/코드/데이터로 구조화를 구현합니다.',
     groups: [
       {
@@ -163,7 +163,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '1W',
+          duration: '0.5W',
           text: '템플릿 1~2종 우선 적용 + 대표 상품/FAQ 페이지에 스키마 적용(파일럿)'
         }
       }
@@ -172,7 +172,7 @@ const slides: Slide[] = [
   {
     id: 6,
     type: 'detail',
-    title: '4단계: 테스트 및 검증 (1.5W)',
+    title: '4단계: 테스트 및 검증 (2W)',
     subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선해 작업합니다.',
     groups: [
       {
@@ -187,7 +187,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '1.5W',
+          duration: '2W',
           text: 'QA 체크리스트 + 전/후 비교 로그 + 이슈/수정 리스트'
         }
       }
@@ -595,72 +595,98 @@ export default function App() {
 
                 {slide.type === 'poc_roadmap' && (
                   <div className="flex-1 flex flex-col">
-                    <div className="mb-6">
+                    <div className="mb-10">
                       <h2 className="text-5xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
-                      <p className="text-xl text-slate-500 font-medium mt-2">{slide.subtitle}</p>
                     </div>
 
                     {/* Horizontal Weekly Timeline section */}
-                    <div className="flex-1 py-8 px-10 bg-white/40 border border-white rounded-[40px] shadow-sm relative overflow-hidden backdrop-blur-sm flex flex-col">
-                      <div className="grid grid-cols-5 mb-4 px-2 text-[10px] font-black tracking-[0.4em] text-slate-300">
-                        {[1, 2, 3, 4, 5].map(w => (
-                          <div key={w} className="text-center">WEEK 0{w}</div>
+                    <div className="flex-1 py-12 px-10 bg-white/40 border border-white rounded-[40px] shadow-sm relative overflow-hidden backdrop-blur-sm flex flex-col justify-center">
+                      <div className="grid grid-cols-4 mb-8 px-2 text-[12px] font-black tracking-[0.5em] text-slate-400">
+                        {[1, 2, 3, 4].map(w => (
+                          <div key={w} className="text-center relative">
+                            WEEK 0{w}
+                            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-px h-64 bg-slate-100" />
+                          </div>
                         ))}
                       </div>
 
-                      <div className="relative flex-1 grid grid-cols-5 gap-0 border-t border-slate-100/50 pt-5">
-                        {/* Vertical Grid Lines */}
-                        {[1, 2, 3, 4, 5].map(i => (
-                          <div key={i} className="absolute top-0 bottom-0 border-l border-slate-100/40" style={{ left: `${(i - 1) * 20}%` }} />
-                        ))}
-                        <div className="absolute top-0 bottom-0 right-0 border-r border-slate-100/40" />
+                      <div className="relative h-64 flex items-center">
+                        {/* The horizontal track */}
+                        <div className="absolute top-1/2 left-0 right-0 h-2 bg-slate-100 -translate-y-1/2 rounded-full" />
 
-                        {/* Phase Rows */}
-                        <div className="col-span-5 flex flex-col space-y-4">
+                        <div className="flex w-full h-full items-center relative z-10">
                           {slide.items?.map((item, idx) => {
-                            const getStyle = (index: number) => {
+                            const getWidth = (index: number) => {
                               switch (index) {
-                                case 0: return { marginLeft: '0%', width: '30%', bgColor: 'bg-sky-400', shadow: '' };
-                                case 1: return { marginLeft: '30%', width: '20%', bgColor: 'bg-blue-500', shadow: '' };
-                                case 2: return { marginLeft: '50%', width: '20%', bgColor: 'bg-blue-700', shadow: '' };
-                                case 3: return { marginLeft: '70%', width: '30%', bgColor: 'bg-indigo-900', shadow: '' };
-                                default: return {};
+                                case 0: return '25%'; // 1W
+                                case 1: return '12.5%'; // 0.5W
+                                case 2: return '12.5%'; // 0.5W
+                                case 3: return '50%'; // 2W
+                                default: return '0%';
                               }
                             };
-                            const style = getStyle(idx);
+                            const getColors = (index: number) => {
+                              switch (index) {
+                                case 0: return 'bg-sky-400 shadow-sky-100';
+                                case 1: return 'bg-blue-500 shadow-blue-100';
+                                case 2: return 'bg-blue-600 shadow-blue-200';
+                                case 3: return 'bg-indigo-900 shadow-indigo-200';
+                                default: return '';
+                              }
+                            };
+
                             return (
                               <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{ delay: 0.2 + idx * 0.1 }}
-                                className="relative"
+                                initial={{ opacity: 0, scaleX: 0 }}
+                                animate={{ opacity: 1, scaleX: 1 }}
+                                transition={{ delay: 0.3 + idx * 0.1 }}
+                                style={{ width: getWidth(idx) }}
+                                className="px-1"
                               >
-                                <div
-                                  className={cn(
-                                    "h-10 rounded-2xl flex items-center px-6 relative z-10 transition-all hover:translate-x-1",
-                                    (style as any).bgColor
-                                  )}
-                                  style={{ marginLeft: (style as any).marginLeft, width: (style as any).width }}
-                                >
-                                  <span className="text-white font-black text-sm whitespace-nowrap">{item.title}</span>
-                                  <span className="ml-auto text-[11px] font-black text-white/60 uppercase">{item.desc}</span>
-                                </div>
+                                <div className="group relative flex flex-col items-center">
+                                  {/* Item Bar */}
+                                  <div className={cn(
+                                    "h-12 w-full rounded-2xl flex items-center justify-center shadow-lg transition-transform hover:-translate-y-1 cursor-default relative",
+                                    getColors(idx)
+                                  )}>
+                                    <span className="text-[11px] font-black text-white whitespace-nowrap overflow-hidden px-2 drop-shadow-sm">
+                                      {item.title.split(': ')[1] || item.title}
+                                    </span>
 
-                                <div
-                                  className="mt-1.5 grid grid-cols-1 gap-0.5 pl-4"
-                                  style={{ marginLeft: (style as any).marginLeft, width: (style as any).width }}
-                                >
-                                  {item.subItems?.map((sub, sidx) => (
-                                    <div key={sidx} className="flex items-center space-x-2 group">
-                                      <div className="w-1 h-1 rounded-full bg-slate-200 shrink-0 group-hover:scale-150 transition-transform" />
-                                      <span className="text-[11px] font-bold text-slate-400 leading-tight group-hover:text-slate-600 transition-colors">{sub}</span>
+                                    {/* Duration Badge inside */}
+                                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-2 py-1 bg-white border border-slate-100 rounded-lg text-[9px] font-black text-slate-500 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                                      {item.desc}
                                     </div>
-                                  ))}
+                                  </div>
+
+                                  {/* Sub-items list below */}
+                                  <div className="mt-6 flex flex-col items-center space-y-2 w-full">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-slate-200 mb-2" />
+                                    {item.subItems?.map((sub, sidx) => (
+                                      <div key={sidx} className="text-center">
+                                        <span className="text-[10px] font-bold text-slate-400 leading-tight block hover:text-blue-600 transition-colors">
+                                          {sub}
+                                        </span>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
                               </motion.div>
                             );
                           })}
+                        </div>
+                      </div>
+
+                      {/* Summary text at bottom */}
+                      <div className="mt-12 flex justify-center items-center space-x-12 opacity-50">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-1 bg-sky-400 rounded-full" />
+                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phase 01: Setup (2W)</span>
+                        </div>
+                        <div className="flex items-center space-x-3">
+                          <div className="w-12 h-1 bg-indigo-900 rounded-full" />
+                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phase 02: Verification (2W)</span>
                         </div>
                       </div>
                     </div>
