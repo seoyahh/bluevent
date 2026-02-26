@@ -682,17 +682,28 @@ export default function App() {
 
                     </div>
 
-                    {/* Work Scope Section (Clean Layout) */}
-                    <div className="mt-12 px-2 border-t border-slate-100/50 pt-8">
-                      <div className="text-slate-900 font-black text-2xl mb-6">작업 범위</div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="flex items-center space-x-4 p-5 bg-slate-50/50 rounded-2xl border border-slate-100">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                          <span className="text-slate-700 font-bold text-lg leading-tight">IA 현행 유지</span>
+                    {/* Work Scope Section (Detail mood) */}
+                    <div className="mt-6 pt-6 border-t border-slate-100/50">
+                      <div className="flex items-center space-x-3 mb-6">
+                        <div className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-lg">Operational Scope</div>
+                        <h3 className="text-2xl font-black text-slate-900 tracking-tight">작업 범위</h3>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-6">
+                        <div className="flex flex-col bg-white rounded-[40px] border border-slate-100 p-8 shadow-sm">
+                          <div className="w-12 h-12 rounded-[18px] bg-slate-50 flex items-center justify-center text-blue-600 mb-5">
+                            <Layout className="w-6 h-6" />
+                          </div>
+                          <h4 className="text-xl font-black text-slate-900 leading-tight">IA 현행 유지</h4>
+                          <p className="text-sm font-medium text-slate-500 mt-2">기존 사이트의 정보 구조를 보존하며 안정성을 최우선으로 고려합니다.</p>
                         </div>
-                        <div className="flex items-center space-x-4 p-5 bg-slate-50/50 rounded-2xl border border-slate-100">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                          <span className="text-slate-700 font-bold text-lg leading-tight">제품 메인 페이지 대상 테크니컬 GEO 위주 변경</span>
+
+                        <div className="flex flex-col bg-white rounded-[40px] border border-slate-100 p-8 shadow-sm">
+                          <div className="w-12 h-12 rounded-[18px] bg-slate-50 flex items-center justify-center text-blue-600 mb-5">
+                            <Target className="w-6 h-6" />
+                          </div>
+                          <h4 className="text-xl font-black text-slate-900 leading-tight">제품 메인 페이지 대상<br />테크니컬 GEO 위주 변경</h4>
+                          <p className="text-sm font-medium text-slate-500 mt-2">검색 엔진 최적화의 핵심인 제품 상세/메인 영역에 기술 역량을 집중합니다.</p>
                         </div>
                       </div>
                     </div>
