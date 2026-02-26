@@ -688,10 +688,35 @@ export default function App() {
                             );
                           })}
                         </div>
+
+                        {/* Enhanced Phase Indicators */}
+                        <div className="mt-8 flex w-full relative h-16 pointer-events-none">
+                          <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
+
+                          <div className="w-[50%] relative flex flex-col items-center">
+                            <div className="absolute top-0 w-full h-1.5 bg-sky-400 rounded-full" />
+                            <div className="mt-4 px-6 py-2 bg-sky-50 border border-sky-100 rounded-full">
+                              <span className="text-[11px] font-black text-sky-700 uppercase tracking-widest flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+                                Phase 01: Setup (1, 2, 3단계 합산 2주)
+                              </span>
+                            </div>
+                            <div className="absolute -top-3 left-0 text-[9px] font-bold text-slate-300">▼ START</div>
+                            <div className="absolute -top-3 right-0 text-[11px] font-bold text-slate-400 tracking-tighter">WEEK 02 END</div>
+                          </div>
+
+                          <div className="w-[50%] relative flex flex-col items-center">
+                            <div className="absolute top-0 w-full h-1.5 bg-indigo-900 rounded-full" />
+                            <div className="mt-4 px-6 py-2 bg-indigo-50 border border-indigo-100 rounded-full">
+                              <span className="text-[11px] font-black text-indigo-900 uppercase tracking-widest flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-900" />
+                                Phase 02: Verification (4단계 2주)
+                              </span>
+                            </div>
+                            <div className="absolute -top-3 right-0 text-[9px] font-bold text-slate-300">FINISH ▼</div>
+                          </div>
+                        </div>
                       </div>
-
-
-
                     </div>
 
                     {/* Work Scope Section (Minimalist List) */}
@@ -869,33 +894,7 @@ export default function App() {
                           ))}
                         </div>
 
-                        {/* Enhanced Phase Indicators */}
-                        <div className="mt-12 flex w-full relative h-16">
-                          <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
 
-                          <div className="w-[50%] relative flex flex-col items-center">
-                            <div className="absolute top-0 w-full h-1 bg-sky-400" />
-                            <div className="mt-4 px-6 py-2 bg-sky-50 border border-sky-100 rounded-full">
-                              <span className="text-[11px] font-black text-sky-700 uppercase tracking-widest flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-sky-400" />
-                                Phase 01: Setup (1, 2, 3단계 합산 2주)
-                              </span>
-                            </div>
-                            <div className="absolute -top-3 left-0 text-[9px] font-bold text-slate-300">▼ START</div>
-                            <div className="absolute -top-3 right-0 text-[11px] font-bold text-slate-400 tracking-tighter">WEEK 02 END</div>
-                          </div>
-
-                          <div className="w-[50%] relative flex flex-col items-center">
-                            <div className="absolute top-0 w-full h-1 bg-indigo-900" />
-                            <div className="mt-4 px-6 py-2 bg-indigo-50 border border-indigo-100 rounded-full">
-                              <span className="text-[11px] font-black text-indigo-900 uppercase tracking-widest flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-900" />
-                                Phase 02: Verification (4단계 2주)
-                              </span>
-                            </div>
-                            <div className="absolute -top-3 right-0 text-[9px] font-bold text-slate-300">FINISH ▼</div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
