@@ -129,13 +129,13 @@ const slides: Slide[] = [
     id: 4,
     type: 'detail',
     title: '2단계: 설계 및 구조화',
-    subtitle: 'AI가 블루벤트를 일관되게 학습할 수 있도록 정보구조 및 화면 구조화 작업을 진행합니다.',
+    subtitle: 'AI가 블루벤트를 일관되게 학습할 수 있도록 정보구조 및 화면 구조화 작업을 진행',
     groups: [
       {
         items: [
           {
             title: '2-1. GEO용 정보 구조(IA) 기술 설계',
-            desc: '토픽/엔티티 단위로 페이지 타입을 정의하고(제품, 비교, FAQ 등), 각 페이지의 필수 섹션과 헤딩 규칙을 표준화합니다.'
+            desc: '토픽/엔티티 단위로 페이지 타입을 정의하고(제품, 비교, FAQ 등), 각 페이지의 필수 섹션과 헤딩 규칙 표준화'
           }
         ],
         deliverable: {
@@ -147,7 +147,7 @@ const slides: Slide[] = [
         items: [
           {
             title: '2-2. 스키마/메타/정규화 적용 설계',
-            desc: '페이지 타입별 JSON-LD 템플릿, 메타/OG, canonical 규칙을 정의하고 고도몰 치환코드 기반 데이터 매핑(제품명, 모델, 스펙 등)을 설계합니다.'
+            desc: '페이지 타입별 JSON-LD 템플릿, 메타/OG, canonical 규칙 정의 및 고도몰 치환코드 기반 데이터 매핑(제품명, 모델, 스펙 등) 설계'
           }
         ],
         deliverable: {
@@ -161,17 +161,17 @@ const slides: Slide[] = [
     id: 5,
     type: 'detail',
     title: '3단계: 구현 및 적용',
-    subtitle: '신규 콘텐츠 제작이 아닌 템플릿/코드/데이터로 구조화를 구현합니다.',
+    subtitle: '신규 콘텐츠 제작이 아닌 템플릿/코드/데이터로 구조화 구현',
     groups: [
       {
         items: [
           {
             title: '3-1. 템플릿/HTML 구조 반영',
-            desc: '헤딩/섹션 구조 표준을 템플릿에 반영하고, 본문에 최소한의 텍스트 구조(정의/스펙/FAQ 등)가 노출되도록 구성합니다.'
+            desc: '헤딩/섹션 구조 표준을 템플릿에 반영하고, 본문에 최소한의 텍스트 구조(정의/스펙/FAQ 등)가 노출되도록 구성'
           },
           {
             title: '3-2. 구조화 데이터 및 메타태그 적용(코드 레벨)',
-            desc: 'JSON-LD 삽입 및 메타/OG, canonical 적용. 고도몰의 SSR 한계를 고려하여 HTML 내 직접 텍스트/데이터를 삽입하는 방식으로 구현합니다.'
+            desc: 'JSON-LD 삽입 및 메타/OG, canonical 적용. 고도몰의 SSR 한계를 고려하여 HTML 내 직접 텍스트/데이터를 삽입하는 방식으로 구현'
           }
         ],
         deliverable: {
@@ -185,17 +185,17 @@ const slides: Slide[] = [
     id: 6,
     type: 'detail',
     title: '4단계: 테스트 및 검증',
-    subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선해 작업합니다.',
+    subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선하여 작업',
     groups: [
       {
         items: [
           {
             title: '4-1. 스키마/정규화/크롤링 QA',
-            desc: '스키마 유효성, canonical/robots/sitemap 일관성, 중복 URL 발생 여부, 헤딩 구조, 본문 텍스트 노출 여부를 점검합니다.'
+            desc: '스키마 유효성, canonical/robots/sitemap 일관성, 중복 URL 발생 여부, 헤딩 구조, 본문 텍스트 노출 여부 점검'
           },
           {
             title: '4-2. AI 가독성/인용 검증(재현 가능한 테스트)',
-            desc: '동일 프롬프트 세트로 전/후 비교 테스트를 수행하고, 근거 URL 인용 여부와 요약 일치도를 확인합니다.'
+            desc: '동일 프롬프트 세트로 전/후 비교 테스트를 수행하고, 근거 URL 인용 여부와 요약 일치도 확인'
           }
         ],
         deliverable: {
@@ -209,7 +209,7 @@ const slides: Slide[] = [
     id: 7,
     type: 'summary',
     title: '확인 및 수급 필요 사항',
-    subtitle: '원활한 POC 수행을 위한 사전 준비 항목입니다.',
+    subtitle: '원활한 POC 수행을 위한 사전 준비 항목',
     content: [
       '고도몰 계정 및 접근 권한 (템플릿/HTML 편집 포함)',
       '제품 데이터 원본 (스펙표, 매뉴얼, FAQ 등)',
