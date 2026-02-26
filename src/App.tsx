@@ -91,7 +91,7 @@ const slides: Slide[] = [
         items: [
           {
             title: '1-1. 현황 진단',
-            desc: '주요 AI 플랫폼(ChatGPT, Perplexity 등)에서 브랜드/제품군 질의 셋 기준 응답 수집(언급 유무, 근거 링크, 사실 오류 등) 및 인용 URL 추적을 통한 후보 랜딩 페이지 특정'
+            desc: '주요 AI 플랫폼에서 브랜드/제품군 질의 셋 기준 응답 수집(언급 유무, 근거 링크, 사실 오류 등) 및 인용 URL 추적을 통한 후보 랜딩 페이지 특정'
           }
         ],
         deliverable: {
