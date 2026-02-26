@@ -689,6 +689,23 @@ export default function App() {
                           <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phase 02: Verification (2W)</span>
                         </div>
                       </div>
+
+                      {/* Work Scope Section */}
+                      <div className="mt-8 pt-6 border-t border-slate-100/50 flex flex-col items-center">
+                        <div className="flex items-center space-x-2 mb-4 text-slate-300">
+                          <span className="text-[10px] font-black uppercase tracking-[0.4em]">[작업 범위]</span>
+                        </div>
+                        <div className="flex space-x-4">
+                          <div className="flex items-center space-x-2 px-4 py-1.5 bg-white/50 border border-white/80 rounded-xl shadow-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                            <span className="text-[11px] font-bold text-slate-600">IA 현행 유지</span>
+                          </div>
+                          <div className="flex items-center space-x-2 px-4 py-1.5 bg-white/50 border border-white/80 rounded-xl shadow-sm">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+                            <span className="text-[11px] font-bold text-slate-600">제품 메인 페이지 대상 테크니컬 GEO 위주 변경</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
