@@ -210,26 +210,25 @@ const slides: Slide[] = [
     type: 'summary',
     title: '확인 및 수급 필요 사항',
     subtitle: '원활한 POC 수행을 위한 사전 준비 항목',
-    content: [
-      '고도몰 계정 및 접근 권한 (템플릿/HTML 편집 포함)',
-      '제품 데이터 원본 (스펙표, 매뉴얼, FAQ 등)',
-      'URL 및 카테고리 운영 정책',
-      '기존 템플릿 및 치환코드 목록'
-    ],
     items: [
       {
         title: '접근 권한',
-        desc: '고도몰 관리자 및 기술 편집 권한',
+        desc: '고도몰 계정 및 접근 권한(템플릿/HTML 편집 권한 포함)',
         icon: <ShieldCheck className="w-6 h-6" />
       },
       {
-        title: '데이터 수급',
-        desc: '제품 스펙, 매뉴얼, FAQ 등 원문 자료',
+        title: '제품 데이터 원본 (Raw Data)',
+        desc: '스펙표(텍스트), 매뉴얼 PDF/텍스트, FAQ 원문, 모델/규격 표준명',
         icon: <BookOpen className="w-6 h-6" />
       },
       {
-        title: '기술 자료',
-        desc: '기존 치환코드 및 URL 정책 자료',
+        title: 'URL 정책 / 운영 정책',
+        desc: '리뉴얼/리다이렉트/카테고리 운영 규칙 (존재 시)',
+        icon: <Target className="w-6 h-6" />
+      },
+      {
+        title: '기존 자료',
+        desc: '기존 템플릿 및 치환코드 목록 (가능 시)',
         icon: <Code2 className="w-6 h-6" />
       }
     ]
@@ -835,26 +834,9 @@ export default function App() {
                       <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 flex-1 items-center">
-                      <div className="space-y-6">
-                        {slide.content?.map((text, idx) => (
-                          <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 * idx + 0.2 }}
-                            className="flex items-center space-x-5 p-5 rounded-[24px] bg-slate-50 border border-slate-100 hover:bg-white hover:shadow-lg transition-all"
-                          >
-                            <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-200">
-                              <CheckCircle2 className="w-6 h-6" />
-                            </div>
-                            <p className="text-xl font-bold text-slate-700 leading-tight">{text}</p>
-                          </motion.div>
-                        ))}
-                      </div>
-
-                      <div className="space-y-4">
-                        <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements</div>
+                    <div className="flex-1 flex flex-col justify-center">
+                      <div className="max-w-4xl w-full mx-auto space-y-4">
+                        <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements Checklist</div>
                         <div className="grid grid-cols-1 gap-4">
                           {slide.items?.map((item, idx) => (
                             <motion.div
