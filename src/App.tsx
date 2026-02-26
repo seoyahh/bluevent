@@ -84,7 +84,7 @@ const slides: Slide[] = [
   {
     id: 3,
     type: 'detail',
-    title: '1단계: 현황 분석 및 진단 (1W)',
+    title: '1단계: 현황 분석 및 진단',
     subtitle: 'GEO 관점에서 "AI가 읽고 이해하고 인용할 수 있는 구조"의 결함을 찾습니다.',
     groups: [
       {
@@ -116,7 +116,7 @@ const slides: Slide[] = [
   {
     id: 4,
     type: 'detail',
-    title: '2단계: 설계 및 구조화 (0.5W)',
+    title: '2단계: 설계 및 구조화',
     subtitle: 'AI가 블루벤트를 일관되게 학습할 수 있도록 정보구조 및 화면 구조화 작업을 진행합니다.',
     groups: [
       {
@@ -148,7 +148,7 @@ const slides: Slide[] = [
   {
     id: 5,
     type: 'detail',
-    title: '3단계: 구현 및 적용 (0.5W)',
+    title: '3단계: 구현 및 적용',
     subtitle: '신규 콘텐츠 제작이 아닌 템플릿/코드/데이터로 구조화를 구현합니다.',
     groups: [
       {
@@ -172,7 +172,7 @@ const slides: Slide[] = [
   {
     id: 6,
     type: 'detail',
-    title: '4단계: 테스트 및 검증 (2W)',
+    title: '4단계: 테스트 및 검증',
     subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선해 작업합니다.',
     groups: [
       {
