@@ -192,6 +192,35 @@ const slides: Slide[] = [
         }
       }
     ]
+  },
+  {
+    id: 7,
+    type: 'summary',
+    title: '확인 및 수급 필요 사항',
+    subtitle: '원활한 POC 수행을 위한 사전 준비 항목입니다.',
+    content: [
+      '고도몰 계정 및 접근 권한 (템플릿/HTML 편집 포함)',
+      '제품 데이터 원본 (스펙표, 매뉴얼, FAQ 등)',
+      'URL 및 카테고리 운영 정책',
+      '기존 템플릿 및 치환코드 목록'
+    ],
+    items: [
+      {
+        title: '접근 권한',
+        desc: '고도몰 관리자 및 기술 편집 권한',
+        icon: <ShieldCheck className="w-6 h-6" />
+      },
+      {
+        title: '데이터 수급',
+        desc: '제품 스펙, 매뉴얼, FAQ 등 원문 자료',
+        icon: <BookOpen className="w-6 h-6" />
+      },
+      {
+        title: '기술 자료',
+        desc: '기존 치환코드 및 URL 정책 자료',
+        icon: <Code2 className="w-6 h-6" />
+      }
+    ]
   }
 ];
 
