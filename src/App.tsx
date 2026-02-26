@@ -829,12 +829,12 @@ export default function App() {
 
                 {slide.type === 'summary' && (
                   <div className="flex-1 flex flex-col">
-                    <div className="mb-12">
+                    <div className="mb-6">
                       <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
                       <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-start pt-8">
+                    <div className="flex-1 flex flex-col justify-start">
                       <div className="w-full space-y-4">
                         <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements Checklist</div>
                         <div className="grid grid-cols-1 gap-4">
