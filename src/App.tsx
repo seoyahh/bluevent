@@ -792,12 +792,7 @@ export default function App() {
                           {/* Deliverable/Output Section */}
                           {group.deliverable && (
                             <div className="p-8 bg-slate-50 border-t border-slate-100 space-y-4">
-                              <div className="flex items-center justify-end">
-                                <div className="flex items-center space-x-1 px-2 py-0.5 bg-blue-100 text-blue-700 rounded-md text-[9px] font-black">
-                                  <Clock className="w-3 h-3" />
-                                  <span>{group.deliverable.duration}</span>
-                                </div>
-                              </div>
+                              {/* Duration badge removed */}
                               <div className="flex items-start space-x-3">
                                 <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
                                 <p className="text-[15px] font-bold text-slate-600 leading-relaxed">
