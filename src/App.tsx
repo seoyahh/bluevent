@@ -836,7 +836,6 @@ export default function App() {
 
                     <div className="flex-1 flex flex-col justify-start">
                       <div className="w-full space-y-4">
-                        <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements Checklist</div>
                         <div className="grid grid-cols-1 gap-4">
                           {slide.items?.map((item, idx) => (
                             <motion.div
