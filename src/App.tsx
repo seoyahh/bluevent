@@ -626,7 +626,7 @@ export default function App() {
                         {/* The horizontal track */}
                         <div className="absolute top-1/2 left-0 right-0 h-2 bg-slate-100 -translate-y-1/2 rounded-full" />
 
-                        <div className="flex w-full h-full items-center relative z-10">
+                        <div className="flex w-full h-full items-start pt-24 relative z-10">
                           {slide.items?.map((item, idx) => {
                             const getWidth = (index: number) => {
                               switch (index) {
