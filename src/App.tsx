@@ -613,21 +613,21 @@ export default function App() {
 
                     {/* Horizontal Weekly Timeline section */}
                     <div className="flex-1 py-12 px-10 bg-white/40 border border-white rounded-[40px] shadow-sm relative overflow-hidden backdrop-blur-sm flex flex-col justify-center">
-                      <div className="grid grid-cols-4 mb-8 px-2 text-[12px] font-black tracking-[0.5em] text-slate-400">
+                      <div className="grid grid-cols-4 mb-4 px-2 text-[12px] font-black tracking-[0.5em] text-slate-400">
                         {[1, 2, 3, 4].map(w => (
                           <div key={w} className="text-center relative">
                             WEEK 0{w}
-                            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-px h-64 bg-slate-100" />
+                            <div className="absolute top-10 left-1/2 -translate-x-1/2 w-px h-48 bg-slate-100" />
                           </div>
                         ))}
                       </div>
 
-                      <div className="relative h-64 flex items-center">
+                      <div className="relative h-48 flex items-center">
                         {/* The horizontal track */}
                         <div className="absolute top-1/2 left-0 right-0 h-2 bg-slate-100 -translate-y-1/2 rounded-full" />
 
                         {/* Phase Grouping Lines - Positioned directly under the bars */}
-                        <div className="absolute top-[152px] inset-x-0 flex pointer-events-none">
+                        <div className="absolute top-[120px] inset-x-0 flex pointer-events-none">
                           <div className="w-[50%] px-1 flex flex-col items-center">
                             <div className="w-full h-[3px] bg-sky-400 rounded-full" />
                           </div>
@@ -636,7 +636,7 @@ export default function App() {
                           </div>
                         </div>
 
-                        <div className="flex w-full h-full items-start pt-24 relative z-10">
+                        <div className="flex w-full h-full items-start pt-16 relative z-10">
                           {slide.items?.map((item, idx) => {
                             const getWidth = (index: number) => {
                               switch (index) {
