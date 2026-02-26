@@ -62,7 +62,7 @@ const slides: Slide[] = [
       {
         title: '1단계: 현황 분석 및 진단',
         desc: '1W',
-        subItems: ['AI 응답/인용 출처 수집', '사이트 구조·색인·정규화 점검']
+        subItems: ['AI 응답/인용 출처 수집', '사이트 구조·색인·정규화 점검', '설계 방안 리뷰(방향 검토/확정)']
       },
       {
         title: '2단계: 설계 및 구조화',
@@ -109,6 +109,18 @@ const slides: Slide[] = [
         deliverable: {
           duration: '0.3W',
           text: 'URL 정규화/색인 진단 체크리스트 + 개선 항목 목록(우선순위 포함)'
+        }
+      },
+      {
+        items: [
+          {
+            title: '1-3. 설계 방안 리뷰',
+            desc: '진단 결과를 기반으로 설계 방향을 검토하고 확정합니다.'
+          }
+        ],
+        deliverable: {
+          duration: '연계',
+          text: '확정된 설계 가이드라인 및 로드맵 보완'
         }
       }
     ]
