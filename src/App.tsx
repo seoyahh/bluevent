@@ -682,13 +682,19 @@ export default function App() {
 
                     </div>
 
-                    {/* Work Scope Section (Simple Text) */}
-                    <div className="mt-10 px-10">
-                      <div className="text-slate-900 font-black text-xl mb-4">[작업 범위]</div>
-                      <ul className="space-y-2 list-disc list-inside">
-                        <li className="text-slate-600 font-bold text-lg">IA 현행 유지</li>
-                        <li className="text-slate-600 font-bold text-lg">제품 메인 페이지 대상 테크니컬 GEO 위주 변경</li>
-                      </ul>
+                    {/* Work Scope Section (Clean Layout) */}
+                    <div className="mt-12 px-2 border-t border-slate-100/50 pt-8">
+                      <div className="text-slate-900 font-black text-2xl mb-6">작업 범위</div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="flex items-center space-x-4 p-5 bg-slate-50/50 rounded-2xl border border-slate-100">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                          <span className="text-slate-700 font-bold text-lg leading-tight">IA 현행 유지</span>
+                        </div>
+                        <div className="flex items-center space-x-4 p-5 bg-slate-50/50 rounded-2xl border border-slate-100">
+                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                          <span className="text-slate-700 font-bold text-lg leading-tight">제품 메인 페이지 대상 테크니컬 GEO 위주 변경</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
