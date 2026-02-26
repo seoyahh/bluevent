@@ -685,7 +685,7 @@ export default function App() {
                     {/* Work Scope Section (Minimalist List) */}
                     <div className="mt-6 pt-6 border-t border-slate-100/50">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-10">
+                        <div className="flex items-center space-x-20">
                           <h3 className="text-xl font-black text-slate-900 tracking-tight shrink-0 uppercase">작업 범위</h3>
                           <div className="flex items-center space-x-8">
                             <div className="flex items-center space-x-3 group">
