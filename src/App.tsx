@@ -76,7 +76,7 @@ const slides: Slide[] = [
       },
       {
         title: '4단계: 테스트 및 검증',
-        desc: '1W',
+        desc: '1.5W',
         subItems: ['기술적 무결성 QA', 'AI 인용/요약 일치도 검증']
       }
     ]
@@ -172,7 +172,7 @@ const slides: Slide[] = [
   {
     id: 6,
     type: 'detail',
-    title: '4단계: 테스트 및 검증 (1W)',
+    title: '4단계: 테스트 및 검증 (1.5W)',
     subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선해 작업합니다.',
     groups: [
       {
@@ -187,7 +187,7 @@ const slides: Slide[] = [
           }
         ],
         deliverable: {
-          duration: '1W',
+          duration: '1.5W',
           text: 'QA 체크리스트 + 전/후 비교 로그 + 이슈/수정 리스트'
         }
       }
