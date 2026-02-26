@@ -58,62 +58,57 @@ const slides: Slide[] = [
     id: 2,
     type: 'poc_roadmap',
     title: '단계별 POC 로드맵',
-    subtitle: '5주간의 고강도 GEO 최적화 및 기술 구현 타임라인',
     items: [
       {
-        title: '1단계: 분석 및 진단',
+        title: '1단계: 현황 분석 및 진단',
         desc: '1.5W',
-        subItems: ['현황 진단', '경쟁사 분석', '인텐트 마이닝']
+        subItems: ['AI 응답/인용 출처 수집', '사이트 구조·색인·정규화 점검']
       },
       {
-        title: '2단계: 설계',
-        desc: '1W',
-        subItems: ['GEO 기반 IA 재정의', '메시지 하우스 및 페이지 구조화 전략 수립', '테크니컬 요구사항 정의']
+        title: '2단계: 설계 및 구조화',
+        desc: '1W + α',
+        subItems: ['IA 기술 설계(토픽/엔티티)', '스키마/메타/정규화 설계']
       },
       {
-        title: '3단계: 구현',
+        title: '3단계: 구현 및 적용',
         desc: '1W',
-        subItems: ['제품 상세페이지 및 신규 콘텐츠 페이지 등록', '구조화 데이터 및 메타태그 적용']
+        subItems: ['HTML 구조/페이징 반영', '구조화 데이터 적용(코드)']
       },
       {
         title: '4단계: 테스트 및 검증',
-        desc: '1.5W',
-        subItems: ['QA 진행', '모니터링 시스템 구축', '초기 운영 안정화']
+        desc: '1W',
+        subItems: ['기술적 무결성 QA', 'AI 인용/요약 일치도 검증']
       }
     ]
   },
   {
     id: 3,
     type: 'detail',
-    title: '1단계: 분석 및 진단 (Analysis & Diagnosis)',
-    subtitle: 'As-is 현황 및 타겟 고객 의도 분석',
+    title: '1단계: 현황 분석 및 진단 (1.5W)',
+    subtitle: 'GEO 관점에서 "AI가 읽고 이해하고 인용할 수 있는 구조"의 결함을 찾습니다.',
     groups: [
       {
         items: [
           {
             title: '1-1. 현황 진단',
-            desc: '주요 AI 플랫폼(ChatGPT, Perplexity 등) 기반 브랜드 언급률, 순위 점유율 및 감성(Sentiment) 정밀 진단'
-          },
-          {
-            title: '1-2. 경쟁사 분석',
-            desc: '경쟁사 대비 AI SOV(Share of Voice) 비교 분석 및 벤치마킹을 통한 핵심 개선 기회(Opportunity) 도출'
+            desc: '주요 AI 플랫폼(ChatGPT, Perplexity 등)에서 브랜드/제품군 질의 셋 기준 응답 수집(언급 유무, 근거 링크, 사실 오류 등) 및 인용 URL 추적을 통한 후보 랜딩 페이지 특정'
           }
         ],
         deliverable: {
           duration: '1W',
-          text: '주요 프롬프트별 응답 데이터 수집 및 SOV 시각화 리포트 도출'
+          text: '프롬프트 세트(20~30개) 정의 + 응답/근거 URL 로그 수집 + 진단 리포트'
         }
       },
       {
         items: [
           {
-            title: '1-3. 인텐트 마이닝',
-            desc: '고객 검색 의도(추천/비교/해결) 기반 자연어 질문 수집 및 토픽 우선순위 타겟팅'
+            title: '1-2. 테크니컬 GEO/SEO 점검(사이트 구조·색인·정규화)',
+            desc: '인덱싱 가능성(robots, sitemap, canonical) 및 사이트 구조(SSR 한계, 템플릿 반복 영역, 본문 비중, 헤딩 구조, 내부링크 품질) 정밀 점검'
           }
         ],
         deliverable: {
           duration: '0.5W',
-          text: '고객 페르소나별 최적화 질문 리스트(FAQ 소스) 도출'
+          text: 'URL 정규화/색인 진단 체크리스트 + 개선 항목 목록(우선순위 포함)'
         }
       }
     ]
@@ -121,35 +116,31 @@ const slides: Slide[] = [
   {
     id: 4,
     type: 'detail',
-    title: '2단계: 설계 (Design)',
-    subtitle: 'AI가 블루벤트를 올바르고 일관되게 학습할 수 있도록 정보 구조와 콘텐츠 전략을 기획합니다.',
+    title: '2단계: 설계 및 구조화 (1W + α)',
+    subtitle: 'AI가 블루벤트를 일관되게 학습할 수 있도록 정보구조 및 화면 구조화 작업을 진행합니다.',
     groups: [
       {
         items: [
           {
-            title: '2-1. GEO 기반 IA(정보 구조) 재정의',
-            desc: '고객 인텐트별 신규 메뉴(솔루션/가이드/사례) 기획 및 GEO Topic Map 기반 IA 재구성'
-          },
-          {
-            title: '2-2. 메시지 하우스 및 페이지 구조화 전략 수립',
-            desc: '브랜드 정의 고도화 및 사람·AI 모두를 만족시키는 전용 "이중 글쓰기" 템플릿 설계'
+            title: '2-1. GEO용 정보 구조(IA) 기술 설계',
+            desc: '토픽/엔티티 단위로 페이지 타입을 정의하고(제품, 비교, FAQ 등), 각 페이지의 필수 섹션과 헤딩 규칙을 표준화합니다.'
           }
         ],
         deliverable: {
           duration: '1W',
-          text: '템플릿 제작 및 페이지 구조화를 위한 와이어프레임 도출'
+          text: '페이지 타입 정의서 + 헤딩/섹션 규칙 + 내부링크 규칙'
         }
       },
       {
         items: [
           {
-            title: '2-3. 테크니컬 요구사항 정의',
-            desc: '스키마 마크업(JSON-LD), llms.txt 구성 및 멀티모달(Alt-tag) 최적화 기술 가이드 수립'
+            title: '2-2. 스키마/메타/정규화 적용 설계',
+            desc: '페이지 타입별 JSON-LD 템플릿, 메타/OG, canonical 규칙을 정의하고 고도몰 치환코드 기반 데이터 매핑(제품명, 모델, 스펙 등)을 설계합니다.'
           }
         ],
         deliverable: {
-          duration: '퍼블공수 확인필요',
-          text: '고도몰 치환코드 활용 및 데이터 매핑 최적화'
+          duration: '확인 필요',
+          text: 'JSON-LD 템플릿(페이지 타입별) + 치환코드/필드 매핑 상세 설계'
         }
       }
     ]
@@ -157,23 +148,23 @@ const slides: Slide[] = [
   {
     id: 5,
     type: 'detail',
-    title: '3단계: 구현 (Implementation)',
-    subtitle: '설계된 전략을 바탕으로 실제 고도몰 솔루션 내에 템플릿과 콘텐츠를 제작하고 기술적 요소를 반영합니다.',
+    title: '3단계: 구현 및 적용 (1W)',
+    subtitle: '신규 콘텐츠 제작이 아닌 템플릿/코드/데이터로 구조화를 구현합니다.',
     groups: [
       {
         items: [
           {
-            title: '3-1. 제품 상세페이지 및 신규 콘텐츠 페이지 등록',
-            desc: '인텐트 대응형 FAQ/HowTo 블록 삽입 및 고도몰 템플릿 최적화 구현'
+            title: '3-1. 템플릿/HTML 구조 반영',
+            desc: '헤딩/섹션 구조 표준을 템플릿에 반영하고, 본문에 최소한의 텍스트 구조(정의/스펙/FAQ 등)가 노출되도록 구성합니다.'
           },
           {
-            title: '3-2. 구조화 데이터 및 메타태그 적용',
-            desc: 'JSON-LD 스키마 삽입, SSR 환경 한계 극복을 위한 직접 텍스트 삽입 및 Canonical 가이드 적용'
+            title: '3-2. 구조화 데이터 및 메타태그 적용(코드 레벨)',
+            desc: 'JSON-LD 삽입 및 메타/OG, canonical 적용. 고도몰의 SSR 한계를 고려하여 HTML 내 직접 텍스트/데이터를 삽입하는 방식으로 구현합니다.'
           }
         ],
         deliverable: {
           duration: '1W',
-          text: 'HTML 기반 최적화 템플릿 실제 상품 및 콘텐츠 적용 완료'
+          text: '템플릿 1~2종 우선 적용 + 대표 상품/FAQ 페이지에 스키마 적용(파일럿)'
         }
       }
     ]
@@ -181,27 +172,23 @@ const slides: Slide[] = [
   {
     id: 6,
     type: 'detail',
-    title: '4단계: 테스트 및 검증 (Testing & Validation)',
-    subtitle: '구현된 웹사이트가 오류 없이 작동하는지 확인하고, AI 검색 엔진에서의 노출 효과를 측정하여 안정화 합니다.',
+    title: '4단계: 테스트 및 검증 (1W)',
+    subtitle: '기술적 무결성과 재현 가능한 검증 절차를 우선해 작업합니다.',
     groups: [
       {
         items: [
           {
-            title: '4-1. QA 진행',
-            desc: '내부 톤앤매너 검수, AI 가독성(요약 일치도) 테스트 및 테크니컬 SEO 정밀 기술 검증'
+            title: '4-1. 스키마/정규화/크롤링 QA',
+            desc: '스키마 유효성, canonical/robots/sitemap 일관성, 중복 URL 발생 여부, 헤딩 구조, 본문 텍스트 노출 여부를 점검합니다.'
           },
           {
-            title: '4-2. 모니터링 시스템 구축',
-            desc: '언급률/순위/SOV 추적 대시보드(Google Sheets + Claude API 연동) 세팅'
-          },
-          {
-            title: '4-3. 초기 운영 안정화',
-            desc: '성과 리포트 기반 콘텐츠 개선 및 전략 수정의 정기적 PDCA(Plan-Do-Check-Act) 사이클 가동'
+            title: '4-2. AI 가독성/인용 검증(재현 가능한 테스트)',
+            desc: '동일 프롬프트 세트로 전/후 비교 테스트를 수행하고, 근거 URL 인용 여부와 요약 일치도를 확인합니다.'
           }
         ],
         deliverable: {
-          duration: '초기 운영 포함 1.5W~2W',
-          text: '성과 모니터링 및 전략 최적화 리포트 정기 도출'
+          duration: '1W',
+          text: 'QA 체크리스트 + 전/후 비교 로그 + 이슈/수정 리스트'
         }
       }
     ]
@@ -374,9 +361,7 @@ export default function App() {
                   <div className="flex-1 flex flex-col">
                     <div className="flex justify-between items-end mb-12 px-2">
                       <div className="space-y-1">
-                        <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">
-                          {slide.id === 10 ? 'Pre-requisites' : `Phase ${slide.id === 3 ? '1' : slide.id === 5 ? '2' : slide.id === 7 ? '3' : '4'}`}
-                        </span>
+
                         <h2 className="text-4xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
                       </div>
                     </div>
@@ -693,8 +678,8 @@ export default function App() {
                         <div className="px-3 py-1 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-lg">Detailed Plan</div>
                         <div className="h-px w-12 bg-slate-200" />
                       </div>
-                      <h2 className="text-5xl font-black text-slate-900 tracking-tight">{slide.title}</h2>
-                      <p className="text-xl text-slate-500 font-medium mt-2">{slide.subtitle}</p>
+                      <h2 className="text-5xl font-black text-slate-900 tracking-tight leading-tight">{slide.title}</h2>
+                      <p className="text-xl text-slate-500 font-medium mt-6">{slide.subtitle}</p>
                     </div>
 
                     <div className={cn(
@@ -716,9 +701,7 @@ export default function App() {
                               <div className="w-16 h-16 rounded-[22px] bg-slate-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-500">
                                 {idx === 0 ? <Search className="w-8 h-8" /> : idx === 1 ? <Target className="w-8 h-8" /> : <TrendingUp className="w-8 h-8" />}
                               </div>
-                              <span className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em]">
-                                {index >= 2 ? `Phase 0${index - 1}` : `Slide 0${index}`}
-                              </span>
+
                             </div>
 
                             <div className="space-y-6">
