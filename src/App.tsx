@@ -626,6 +626,18 @@ export default function App() {
                         {/* The horizontal track */}
                         <div className="absolute top-1/2 left-0 right-0 h-2 bg-slate-100 -translate-y-1/2 rounded-full" />
 
+                        {/* Phase Grouping Lines - Positioned directly under the bars */}
+                        <div className="absolute top-[152px] inset-x-0 flex pointer-events-none">
+                          <div className="w-[50%] px-1 flex flex-col items-center">
+                            <div className="w-full h-[3px] bg-sky-400 rounded-full" />
+                            <span className="text-[9px] font-black text-sky-500 mt-2 uppercase tracking-tight">Phase 01: Setup (2W)</span>
+                          </div>
+                          <div className="w-[50%] px-1 flex flex-col items-center">
+                            <div className="w-full h-[3px] bg-indigo-900 rounded-full" />
+                            <span className="text-[9px] font-black text-indigo-900 mt-2 uppercase tracking-tight">Phase 02: Verification (2W)</span>
+                          </div>
+                        </div>
+
                         <div className="flex w-full h-full items-start pt-24 relative z-10">
                           {slide.items?.map((item, idx) => {
                             const getWidth = (index: number) => {
@@ -673,7 +685,7 @@ export default function App() {
                                   </div>
 
                                   {/* Sub-items list below */}
-                                  <div className="mt-6 flex flex-col items-center space-y-2 w-full">
+                                  <div className="mt-12 flex flex-col items-center space-y-2 w-full">
                                     <div className="w-1.5 h-1.5 rounded-full bg-slate-200 mb-2" />
                                     {item.subItems?.map((sub, sidx) => (
                                       <div key={sidx} className="text-center">
@@ -687,34 +699,6 @@ export default function App() {
                               </motion.div>
                             );
                           })}
-                        </div>
-
-                        {/* Enhanced Phase Indicators */}
-                        <div className="mt-8 flex w-full relative h-16 pointer-events-none">
-                          <div className="absolute inset-x-0 top-0 h-px bg-slate-100" />
-
-                          <div className="w-[50%] relative flex flex-col items-center">
-                            <div className="absolute top-0 w-full h-1.5 bg-sky-400 rounded-full" />
-                            <div className="mt-4 px-6 py-2 bg-sky-50 border border-sky-100 rounded-full">
-                              <span className="text-[11px] font-black text-sky-700 uppercase tracking-widest flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-sky-400" />
-                                Phase 01: Setup (1, 2, 3단계 합산 2주)
-                              </span>
-                            </div>
-                            <div className="absolute -top-3 left-0 text-[9px] font-bold text-slate-300">▼ START</div>
-                            <div className="absolute -top-3 right-0 text-[11px] font-bold text-slate-400 tracking-tighter">WEEK 02 END</div>
-                          </div>
-
-                          <div className="w-[50%] relative flex flex-col items-center">
-                            <div className="absolute top-0 w-full h-1.5 bg-indigo-900 rounded-full" />
-                            <div className="mt-4 px-6 py-2 bg-indigo-50 border border-indigo-100 rounded-full">
-                              <span className="text-[11px] font-black text-indigo-900 uppercase tracking-widest flex items-center gap-2">
-                                <div className="w-1.5 h-1.5 rounded-full bg-indigo-900" />
-                                Phase 02: Verification (4단계 2주)
-                              </span>
-                            </div>
-                            <div className="absolute -top-3 right-0 text-[9px] font-bold text-slate-300">FINISH ▼</div>
-                          </div>
                         </div>
                       </div>
                     </div>
