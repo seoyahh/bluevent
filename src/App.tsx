@@ -115,7 +115,7 @@ const slides: Slide[] = [
         items: [
           {
             title: '1-3. 설계 방안 리뷰',
-            desc: '진단 결과를 기반으로 설계 방향을 검토하고 확정합니다.'
+            desc: '진단 결과를 기반으로 설계 방향을 검토하고 확정'
           }
         ],
         deliverable: {
