@@ -678,17 +678,7 @@ export default function App() {
                         </div>
                       </div>
 
-                      {/* Summary text at bottom */}
-                      <div className="mt-12 flex justify-center items-center space-x-12 opacity-50">
-                        <div className="flex items-center space-x-3">
-                          <div className="w-12 h-1 bg-sky-400 rounded-full" />
-                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phase 01: Setup (2W)</span>
-                        </div>
-                        <div className="flex items-center space-x-3">
-                          <div className="w-12 h-1 bg-indigo-900 rounded-full" />
-                          <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Phase 02: Verification (2W)</span>
-                        </div>
-                      </div>
+
 
                     </div>
 
