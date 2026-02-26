@@ -868,6 +868,22 @@ export default function App() {
                             </motion.div>
                           ))}
                         </div>
+
+                        {/* Phase Indicator Lines at bottom */}
+                        <div className="mt-8 flex w-full px-1">
+                          <div className="w-[50%] px-1">
+                            <div className="flex flex-col items-center">
+                              <div className="w-full h-1 bg-sky-400 rounded-full mb-3 opacity-60" />
+                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Phase 01: Setup (2W)</span>
+                            </div>
+                          </div>
+                          <div className="w-[50%] px-1">
+                            <div className="flex flex-col items-center">
+                              <div className="w-full h-1 bg-indigo-900 rounded-full mb-3 opacity-60" />
+                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Phase 02: Verification (2W)</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
