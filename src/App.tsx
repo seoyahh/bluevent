@@ -803,7 +803,7 @@ export default function App() {
 
                           {/* Deliverable/Output Section */}
                           {group.deliverable && (
-                            <div className="p-8 bg-slate-50 border-t border-slate-100 space-y-4">
+                            <div className="p-8 bg-slate-50 border-t border-slate-100 space-y-4 min-h-[128px]">
                               {/* Duration badge removed */}
                               <div className="flex items-start space-x-3">
                                 <div className="mt-2 w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
