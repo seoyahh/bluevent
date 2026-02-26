@@ -102,7 +102,7 @@ const slides: Slide[] = [
       {
         items: [
           {
-            title: '1-2. 테크니컬 GEO/SEO 점검(사이트 구조·색인·정규화)',
+            title: '1-2. 테크니컬 GEO/SEO 점검',
             desc: '인덱싱 가능성(robots, sitemap, canonical) 및 사이트 구조(SSR 한계, 템플릿 반복 영역, 본문 비중, 헤딩 구조, 내부링크 품질) 정밀 점검'
           }
         ],
