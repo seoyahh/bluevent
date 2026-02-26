@@ -57,7 +57,7 @@ const slides: Slide[] = [
   {
     id: 2,
     type: 'poc_roadmap',
-    title: '단계별 POC 로드맵',
+    title: 'Phase 1 단계별 POC 로드맵',
     items: [
       {
         title: '1단계: 현황 분석 및 진단',
