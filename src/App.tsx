@@ -834,8 +834,8 @@ export default function App() {
                       <p className="text-lg text-slate-500 font-medium mt-2">{slide.subtitle}</p>
                     </div>
 
-                    <div className="flex-1 flex flex-col justify-center">
-                      <div className="max-w-4xl w-full mx-auto space-y-4">
+                    <div className="flex-1 flex flex-col justify-start pt-8">
+                      <div className="max-w-4xl w-full space-y-4">
                         <div className="p-1 px-3 bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full inline-block mb-2">Requirements Checklist</div>
                         <div className="grid grid-cols-1 gap-4">
                           {slide.items?.map((item, idx) => (
