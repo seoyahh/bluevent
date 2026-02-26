@@ -722,7 +722,6 @@ export default function App() {
                             </div>
                           </div>
                         </div>
-                        <div className="text-[10px] font-black text-slate-300 uppercase tracking-[0.3em] hidden md:block">Strategic Alignment</div>
                       </div>
                     </div>
                   </div>
