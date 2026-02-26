@@ -682,29 +682,23 @@ export default function App() {
 
                     </div>
 
-                    {/* Work Scope Section (Detail mood) */}
+                    {/* Work Scope Section (Compact) */}
                     <div className="mt-6 pt-6 border-t border-slate-100/50">
-                      <div className="flex items-center space-x-3 mb-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-4">
+                          <h3 className="text-xl font-black text-slate-900 tracking-tight shrink-0">작업 범위</h3>
+                          <div className="flex items-center gap-3">
+                            <div className="flex items-center space-x-3 px-5 py-2.5 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                              <Layout className="w-4 h-4 text-blue-600" />
+                              <span className="text-[15px] font-bold text-slate-700 whitespace-nowrap">IA 현행 유지</span>
+                            </div>
+                            <div className="flex items-center space-x-3 px-5 py-2.5 bg-white border border-slate-100 rounded-2xl shadow-sm">
+                              <Target className="w-4 h-4 text-blue-600" />
+                              <span className="text-[15px] font-bold text-slate-700 whitespace-nowrap">제품 메인 페이지 대상 테크니컬 GEO 위주 변경</span>
+                            </div>
+                          </div>
+                        </div>
                         <div className="px-3 py-1 bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest rounded-lg">Operational Scope</div>
-                        <h3 className="text-2xl font-black text-slate-900 tracking-tight">작업 범위</h3>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-6">
-                        <div className="flex flex-col bg-white rounded-[40px] border border-slate-100 p-8 shadow-sm">
-                          <div className="w-12 h-12 rounded-[18px] bg-slate-50 flex items-center justify-center text-blue-600 mb-5">
-                            <Layout className="w-6 h-6" />
-                          </div>
-                          <h4 className="text-xl font-black text-slate-900 leading-tight">IA 현행 유지</h4>
-                          <p className="text-sm font-medium text-slate-500 mt-2">기존 사이트의 정보 구조를 보존하며 안정성을 최우선으로 고려합니다.</p>
-                        </div>
-
-                        <div className="flex flex-col bg-white rounded-[40px] border border-slate-100 p-8 shadow-sm">
-                          <div className="w-12 h-12 rounded-[18px] bg-slate-50 flex items-center justify-center text-blue-600 mb-5">
-                            <Target className="w-6 h-6" />
-                          </div>
-                          <h4 className="text-xl font-black text-slate-900 leading-tight">제품 메인 페이지 대상<br />테크니컬 GEO 위주 변경</h4>
-                          <p className="text-sm font-medium text-slate-500 mt-2">검색 엔진 최적화의 핵심인 제품 상세/메인 영역에 기술 역량을 집중합니다.</p>
-                        </div>
                       </div>
                     </div>
                   </div>
